@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
 
         // if no other command is running on the drivetrain, make it drive
         drivetrain.setDefaultCommand(
-            drivetrain.drive(controller::getLeftY, () -> -1 * controller.getRightX()) // 8756-changed left joystick from x to y, inverted rotaion input 
+            drivetrain.drive(controller::getLeftY, () -> -controller.getRightX())
         );
 
         // when the left trigger is held, and the sensor is NOT hit, run the picker motor
