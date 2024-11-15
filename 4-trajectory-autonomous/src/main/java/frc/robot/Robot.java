@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
+import edu.wpi.first.math.trajectory.TrajectoryConfig;
+import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
@@ -43,7 +46,19 @@ public class Robot extends TimedRobot {
     // code run when autonomous mode begins. any prep work should be done here
     @Override
     public void autonomousInit() {
-        autoTimer.restart();
+        // this voltage constraint ensures the robot doesn't try accelerate
+        // faster than it can
+        DifferentialDriveVoltageConstraint autoVoltageConstraint =
+            new DifferentialDriveVoltageConstraint(
+                new SimpleMotorFeedforward(
+                    Drivetrain.KS_VOLTS,
+                    Drivetrain.KV_VOLT_SECONDS_PER_METER,
+                    Drivetrain.KA_VOLT_SECONDS_SQUARED_PER_METER
+                ),
+                Drivetrain.kinematics,
+                10 // max voltage. leave room below 12 volts to account for
+                   // voltage sag on the battery
+            );
     }
 
     // code run during autonomous period, once every 20ms. logic that runs the

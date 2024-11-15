@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -26,7 +27,18 @@ public class Drivetrain extends SubsystemBase {
     // that to infer where the robot must have traveled
     private DifferentialDriveOdometry odometry;
 
+    // the kinematics take care of calculating what speed the wheels should go
+    // at if we want the robot to go at a specific speed, and requires the track
+    // width (how wide the tank drive is from wheel to wheel) to calculate that
+    public static final DifferentialDriveKinematics kinematics =
+        new DifferentialDriveKinematics(.22);
+
     private static final double MOTOR_ROTATIONS_PER_METER = 1.0;
+    public static final double KS_VOLTS = 0;
+    public static final double KV_VOLT_SECONDS_PER_METER = 0;
+    public static final double KA_VOLT_SECONDS_SQUARED_PER_METER = 0;
+    public static final double MAX_ACCELERATION = 1;
+    public static final double MAX_VELOCITY = 2;
 
     public Drivetrain() {
         leftMotor = new CANSparkMax(33, MotorType.kBrushless);
