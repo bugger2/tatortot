@@ -52,16 +52,19 @@ public class Robot extends TimedRobot {
     // other way, drive forward, then stops
     @Override
     public void autonomousPeriodic() {
-        if (autoTimer.get() < 2) {
-            drivetrain.drive(0.3, 0);
-        } else if (autoTimer.get() < 4) {
-            drivetrain.drive(0.3, 0.3);
-        } else if (autoTimer.get() < 6) {
-            drivetrain.drive(0.3, 0);
-        } else if (autoTimer.get() < 8) {
-            drivetrain.drive(0.3, -0.3);
-        } else if (autoTimer.get() < 10) {
-            drivetrain.drive(0.3, 0.3);
+        double speed = 1;
+        if (autoTimer.get() < 0.75) {
+            drivetrain.drive(speed, -0.5);
+        } else if (autoTimer.get() < 1.75) {
+            drivetrain.drive(speed, speed);
+        } else if (autoTimer.get() < 2.75) {
+            drivetrain.drive(speed, 0);
+        } else if (autoTimer.get() < 6.325) {
+            drivetrain.drive(speed, -0.57);
+        } else if (autoTimer.get() < 7.2) {
+            drivetrain.drive(speed, 0);
+        } else if (autoTimer.get() < 8.5) {
+            drivetrain.drive(speed, 0.6);
         } else {
             drivetrain.drive(0, 0);
         }
