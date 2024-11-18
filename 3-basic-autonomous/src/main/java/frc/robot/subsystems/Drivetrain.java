@@ -20,9 +20,10 @@ public class Drivetrain extends SubsystemBase {
         rightMotor = new CANSparkMax(21, MotorType.kBrushless);
 
         diffDrive = new DifferentialDrive(leftMotor, rightMotor);
+        diffDrive.setMaxOutput(0.1);
     }
 
     public void drive(double forward, double rotational) {
-        diffDrive.arcadeDrive(forward, rotational);
+        diffDrive.arcadeDrive(-forward, rotational);
     }
 }
