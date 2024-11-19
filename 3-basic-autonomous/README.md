@@ -1,5 +1,7 @@
 # Basic Autonomous Routine
 
+https://github.com/user-attachments/assets/492e1122-2b06-46ea-bc26-fd0804864368
+
 The code in this project serves as the most basic example on how to do something
 in auto. It ain&rsquo;t fancy or intuitive, but it&rsquo;s the simplest logic to create for
 somebody who might not be a programming expert quite yet.
@@ -10,7 +12,7 @@ The code to run auto is split into two separate functions. There&rsquo;s the
 autonomous initialization code that gets run at the start of a match, and theres
 the autonomous periodic code, which gets run once every 20ms throughout the
 entirety of the autonomous period. These are located in
-(`src/main/java/frc/robot/Robot.java`)[https://github.com/sentientspud/tatortot/blob/main/3-basic-autonomous/src/main/java/frc/robot/Robot.java]
+[`src/main/java/frc/robot/Robot.java`](https://github.com/sentientspud/tatortot/blob/main/3-basic-autonomous/src/main/java/frc/robot/Robot.java)
 and are written as so:
 
     @Override
